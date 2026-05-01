@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNest Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-operations">
+    <video class="video-bg" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='phones/phone_bg.mp4') }}" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <main class="shell">
+        <nav class="site-nav panel">
+            <a class="logo" href="/technest">TechNest</a>
+            <div class="nav-text-links">
+                <a class="nav-text-link" href="/technest">Home</a>
+                <a class="nav-text-link" id="nav-products" href="#layer-one">Products</a>
+                <a class="nav-text-link" href="/orders">Order</a>
+                <a class="nav-text-link" href="/inventory">Inventory</a>
+            </div>
+        </nav>
+
+        <section class="home-spotlight layer">
+            <h1>Shop Available Phone Models</h1>
+            <p>Browsing for a new phone can never be easier.</p>
+        </section>
+
+        <section class="panel layer" id="layer-one">
+            <div class="panel-header">
+                <div>
+                    <h2>Products</h2>
+                    <div class="subtle">Available models in the store</div>
+                </div>
+            </div>
+            <div class="catalog" id="catalog"></div>
+        </section>
+
+        <section class="panel layer hidden" id="layer-two">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Order</span>
+                    <h2>Place Order</h2>
+                    <div class="subtle">Fill in your details to confirm purchase</div>
+                </div>
+            </div>
+            <div class="forms single-column">
+                <section class="panel section-panel">
+                    <div class="product-focus" id="product-focus">
+                        <img class="focus-image" id="focus-image" src="" alt="Selected phone photo">
+                        <h3 id="focus-name">Select a phone model</h3>
+                        <p class="subtle" id="focus-description">Model details will appear here after you click on a catalog card.</p>
+                        <div class="focus-meta">
+                            <span class="pill" id="focus-brand">Brand</span>
+                            <span class="pill" id="focus-id">ID</span>
+                            <span class="pill" id="focus-stock">Stock</span>
+                        </div>
+                        <div class="price" id="focus-price">$0.00</div>
+                    </div>
+                </section>
+
+                <section class="panel section-panel">
+                    <form id="order-form">
+                        <label>
+                            Customer name
+                            <input type="text" name="customer_name" placeholder="Ava Cruz" required>
+                        </label>
+                        <label>
+                            Phone model
+                            <select name="product_id" id="order-product" required></select>
+                        </label>
+                        <label>
+                            Quantity
+                            <input type="number" name="quantity" min="1" value="1" required>
+                        </label>
+                        <button type="submit">Confirm order</button>
+                        <div class="message" id="order-message"></div>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <section class="panel layer hidden" id="layer-three">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Confirmation</span>
+                    <h2>Order Confirmed</h2>
+                </div>
+            </div>
+            <div class="confirm-box">
+                <h3 id="confirm-title">Waiting for your order</h3>
+                <p class="subtle" id="confirm-message">Complete your order to show confirmation details.</p>
+                <div class="focus-meta">
+                    <span class="pill" id="confirm-order-id">Order: -</span>
+                    <span class="pill" id="confirm-product">Product: -</span>
+                    <span class="pill" id="confirm-qty">Qty: -</span>
+                </div>
+                <a class="btn-secondary" href="/orders">View Things You Ordered</a>
+            </div>
+        </section>
+
+        <div class="modal" id="product-modal" aria-hidden="true">
+            <div class="modal-backdrop" id="modal-backdrop"></div>
+            <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+                <button class="modal-close" id="modal-close" type="button" aria-label="Close product preview">x</button>
+                <img class="modal-image" id="modal-image" src="" alt="Selected phone image">
+                <div class="modal-content">
+                    <span class="pill" id="modal-brand">Brand</span>
+                    <h2 id="modal-name">Product Name</h2>
+                    <p class="subtle" id="modal-description">Product description</p>
+                    <div class="focus-meta">
+                        <span class="pill" id="modal-id">ID</span>
+                        <span class="pill" id="modal-stock">Stock</span>
+                    </div>
+                    <div class="price" id="modal-price">$0.00</div>
+                    <button class="modal-buy" id="modal-buy" type="button">Buy Now</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

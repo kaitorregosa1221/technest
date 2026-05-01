@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-hero">
+    <video class="video-bg" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='phones/phone_bg.mp4') }}" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <main class="hero-shell hero-shell-minimal">
+        <section class="hero-landing hero-landing-minimal">
+            <h1>TechNest</h1>
+            <p class="slogan">Find your next phone in minutes.</p>
+            <div class="hero-actions">
+                <a class="btn-primary" href="/technest">Get Started</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

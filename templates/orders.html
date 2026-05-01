@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-operations">
+    <video class="video-bg" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='phones/phone_bg.mp4') }}" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <main class="shell">
+        <nav class="site-nav panel">
+            <a class="logo" href="/technest">TechNest</a>
+            <div class="nav-text-links">
+                <a class="nav-text-link" href="/technest">Home</a>
+                <a class="nav-text-link" href="/technest#layer-one">Products</a>
+                <a class="nav-text-link" href="/orders">Order</a>
+                <a class="nav-text-link" href="/inventory">Inventory</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="top-nav">
+                <span class="eyebrow">Order Management</span>
+            </div>
+            <h1>Order and operations page</h1>
+            <p>Track order history, payment results, and full activity logs from your XML-backed workflows.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="subtle">Orders logged</span>
+                    <strong id="order-count">0</strong>
+                    <span class="subtle">Recent order events</span>
+                </div>
+                <div class="stat">
+                    <span class="subtle">Payments tracked</span>
+                    <strong id="payment-count">0</strong>
+                    <span class="subtle">Successful and failed attempts</span>
+                </div>
+                <div class="stat">
+                    <span class="subtle">Catalog items</span>
+                    <strong id="catalog-count">0</strong>
+                    <span class="subtle">Live products in stock</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="tables">
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Order history</h2>
+                        <div class="subtle">Placed orders appear here automatically</div>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Payments</h2>
+                        <div class="subtle">Latest payment attempts</div>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payments-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Activity log</h2>
+                        <div class="subtle">All inventory, order, and payment operations</div>
+                    </div>
+                </div>
+                <div class="activity-list" id="activity-list"></div>
+            </section>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
